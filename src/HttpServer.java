@@ -15,6 +15,7 @@ public class HttpServer{
 
             // constantly waiting for a request to be made on port number.
             while(true) {
+
                 Socket clientSocket = serverSocket.accept();
 
                 // output to client
