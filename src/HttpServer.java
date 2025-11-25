@@ -28,11 +28,15 @@ public class HttpServer{
 
         // read the incoming HTTP request
         String requestHeader;
-        while((requestHeader = input.readLine()) != null){
-            System.out.println("Header "+requestHeader);
+        while((requestHeader = input.readLine()) != null){ // assigns requestHeader var to the input and checks if its not null
+            System.out.println(requestHeader);
             if(requestHeader.isEmpty()){
                 break;
             }
         }
+
+
+
+
     }
 }
