@@ -4,7 +4,7 @@ import java.net.Socket;
 
 public class HttpServer{
     public static void main(String[] args) throws IOException {
-        int port = 8080; // giving a port value for now to test
+        int port = 8080;
 
         ServerSocket serverSocket = new ServerSocket(port); // listening to port
         System.out.println("listening on port " + port);
@@ -15,16 +15,24 @@ public class HttpServer{
                 Socket clientSocket = serverSocket.accept(); // connect to port
 
                 handleClient(clientSocket);
+                clientSocket.close();
             }
     }
 
-    private static void handleClient(Socket clientSocket){
+    private static void handleClient(Socket clientSocket) throws IOException {
         // read the request and send it back
 
         // variables for output and input
         BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())); // input from client
         OutputStream output = clientSocket.getOutputStream(); // output to client
 
-        // read the incoming HTTP request: GET request
+        // read the incoming HTTP request
+        String requestHeader;
+        while((requestHeader = input.readLine()) != null){
+            System.out.println("Header "+requestHeader);
+            if(requestHeader.isEmpty()){
+                break;
+            }
+        }
     }
 }
