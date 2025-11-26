@@ -1,0 +1,1 @@
+This is a super simple http server that checks if there is a connection on port 8080 and sends a request and response. It is meant to be super simple to gain an understanding of networking concepts and java
