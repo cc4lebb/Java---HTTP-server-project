@@ -22,7 +22,6 @@ public class HttpServer{
     private static void handleClient(Socket clientSocket) throws IOException {
         // read the request and send it back
 
-        // variables for output and input
         BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())); // input from client
         OutputStream output = clientSocket.getOutputStream(); // output to client
 
@@ -35,8 +34,15 @@ public class HttpServer{
             }
         }
 
+        // HTTP response 
+        String okResponse =
+                "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\nUser data here";
 
+        byte[] data = okResponse.getBytes("UTF-8");
 
+        // this is written to command line when curled
+        output.write(data);
+        output.flush();
 
     }
 }
